@@ -9,7 +9,7 @@ export default function Header() {
 
   return (
     <header
-      className="flex justify-between items-center w-full px-5 py-2 sticky top-0 bg-screen z-10 after:shadow-lg bg-light-gray"
+      className="flex justify-between items-center w-full md:px-12 px-5 py-2 sticky top-0 bg-screen z-10 after:shadow-lg bg-light-gray"
       style={{ position: "sticky" }}
     >
       <Link href="/" className="h-full max-h-24 md:w-auto w-32">
@@ -69,9 +69,7 @@ export default function Header() {
         <button className="hover:scale-125 transition-all">
           <IoMoon className="text-2xl" />
         </button>
-        <button className="sm:inline hidden btn px-5 py-2 rounded-lg hover">
-          Let&apos;s Talk
-        </button>
+        <button className="sm:inline hidden btn">Let&apos;s Talk</button>
         <button
           className="md:hidden block p-1 rounded-lg text-xl"
           onClick={() => setMenu(!menu)}

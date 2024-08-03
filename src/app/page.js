@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div className="w-full max-w-[1950px] mx-auto">
       <Header />
-      <main>
+      <main className="md:px-12 px-5 py-2 flex flex-col justify-center items-center w-full gap-12">
         <Hero />
       </main>
       <footer></footer>
