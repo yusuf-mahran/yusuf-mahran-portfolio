@@ -3,31 +3,151 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --primary-blue: #1b1f3b;
+  --secondary-blue: #4a55a1;
+  --light-skyblue: #70bce3;
+  --primary-orange: #ff8a00;
+  --light-gray: #f2f2f2;
+  --medium-gray: #c5c5c5;
+  --dark-gray: #5b5b5b;
+  --white: #ffffff;
+
+  --radial-gradient: radial-gradient(#000 76%, #fff 100%);
+
+  /* Services Colors */
+  --custom-web-dev: #5eff5a;
+  --ux-ui-implementation: #ff8a00;
+  --spa: #ff0000;
+  --pwa: #ccff00;
+  --performance-optimization: #0066ff;
+  --web-maintenance: #bd00ff;
+  --api-integration: #00c0a9;
+  --ecommerce: #c07f00;
+
+  /* Experience Colors */
+  --upwork: #6fda44;
+  --peoplePerHour: #fd5100;
+  --findingFromEgy: #ff0000;
+  --mostaql: #2b88c5;
+
+  /* Education Colors */
+  --meta: #1368e2;
+  --harvard: #542f1d;
+  --almdrasa: #00f0ff;
+  --alexUniv: #1368e2;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    /* --primary-blue: #eaecff;
+    --secondary-blue: #caccdd;
+    --light-skyblue: #70bce3;
+    --primary-orange: #ff8a00;
+    --light-gray: #1f1f1f;
+    --medium-gray: #c5c5c5;
+    --dark-gray: #5b5b5b;
+    --white: #000; */
   }
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: var(--primary-blue);
+  background-color: var(--light-gray);
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+.btn {
+  border-radius: 10px;
+  background: linear-gradient(
+    97deg,
+    var(--primary-blue) -0.1%,
+    var(--secondary-blue) 99.9%
+  );
+  color: var(--light-gray);
+  overflow: hidden;
+  position: relative;
+  transition: 0.2s transform ease-in-out;
+  will-change: transform;
+  z-index: 0;
+}
+.btn::after {
+  content: "";
+  background: linear-gradient(
+    97deg,
+    var(--secondary-blue),
+    var(--light-skyblue)
+  );
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(-100%, 0) rotate(10deg);
+  transform-origin: top left;
+  transition: 0.2s transform ease-out;
+  will-change: transform;
+  z-index: -1;
+}
+.btn:hover::after {
+  transform: translate(0, 0);
+}
+.btn:hover {
+  transform: scale(1.05);
+  will-change: transform;
+}
+
+.navigation-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
+
+  @media (width < 768px) {
+    position: absolute;
+    top: 82px;
+    left: 0;
+    backdrop-filter: blur(50px);
+    width: 100%;
+    min-height: 100svh;
+    border-radius: 0 10px 10px 0;
+    transform: translateX(100%);
+    transition: all 0.2s ease-in-out;
+
+    &.active {
+      transform: translateX(0);
+    }
+
+    ul {
+      flex-direction: column;
+      gap: 50px;
+    }
+  }
+}
+
+.bg-screen {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    z-index: -1;
+    width: calc(100vw - 15px);
+    height: 100%;
+    transform: translate(-50%, 0);
+    padding: 0;
+    margin: 0;
+    background-color: inherit;
+    background: inherit;
+  }
+}
+
+.bg-light-gray {
+  background-color: var(--light-gray);
 }
