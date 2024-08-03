@@ -1,6 +1,7 @@
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import About from "./components/About";
+import Services from "./components/Services";
 
 export default function Home() {
   return (
@@ -9,6 +10,7 @@ export default function Home() {
       <main className="md:px-12 px-5 py-2 flex flex-col justify-center items-center w-full gap-12">
         <Hero />
         <About />
+        <Services />
       </main>
       <footer></footer>
     </div>

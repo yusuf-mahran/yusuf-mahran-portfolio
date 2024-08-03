@@ -1,0 +1,159 @@
+:root {
+  --custom-web-dev: #5eff5a;
+  --custom-web-dev-opacity: #5eff5a40;
+  --ux-ui-implementation: #ff8a00;
+  --ux-ui-implementation-opacity: #ff8a0040;
+  --spa: #ff0000;
+  --spa-opacity: #ff000040;
+  --pwa: #ccff00;
+  --pwa-opacity: #ccff0040;
+  --performance-optimization: #0066ff;
+  --performance-optimization-opacity: #0066ff40;
+  --web-maintenance: #bd00ff;
+  --web-maintenance-opacity: #bd00ff40;
+  --api-integration: #00c0a9;
+  --api-integration-opacity: #00c0a940;
+  --ecommerce: #c07f00;
+  --ecommerce-opacity: #c07f0040;
+}
+.custom-web-dev {
+  figure {
+    background: linear-gradient(
+      180deg,
+      var(--custom-web-dev),
+      var(--custom-web-dev-opacity)
+    );
+  }
+  &::after,
+  &::before,
+  .line {
+    background-color: var(--custom-web-dev);
+  }
+}
+
+.ux-ui-implementation {
+  figure {
+    background: linear-gradient(
+      180deg,
+      var(--ux-ui-implementation),
+      var(--ux-ui-implementation-opacity)
+    );
+  }
+  &::after,
+  &::before,
+  .line {
+    background-color: var(--ux-ui-implementation);
+  }
+}
+
+.spa {
+  figure {
+    background: linear-gradient(180deg, var(--spa), var(--spa-opacity));
+  }
+  &::after,
+  &::before,
+  .line {
+    background-color: var(--spa);
+  }
+}
+
+.pwa {
+  figure {
+    background: linear-gradient(180deg, var(--pwa), var(--pwa-opacity));
+  }
+  &::after,
+  &::before,
+  .line {
+    background-color: var(--pwa);
+  }
+}
+
+.performance-optimization {
+  figure {
+    background: linear-gradient(
+      180deg,
+      var(--performance-optimization),
+      var(--performance-optimization-opacity)
+    );
+  }
+  &::after,
+  &::before,
+  .line {
+    background-color: var(--performance-optimization);
+  }
+}
+
+.web-maintenance {
+  figure {
+    background: linear-gradient(
+      180deg,
+      var(--web-maintenance),
+      var(--web-maintenance-opacity)
+    );
+  }
+  &::after,
+  &::before,
+  .line {
+    background-color: var(--web-maintenance);
+  }
+}
+
+.api-integration {
+  figure {
+    background: linear-gradient(
+      180deg,
+      var(--api-integration),
+      var(--api-integration-opacity)
+    );
+  }
+  &::after,
+  &::before,
+  .line {
+    background-color: var(--api-integration);
+  }
+}
+
+.ecommerce {
+  figure {
+    background: linear-gradient(
+      180deg,
+      var(--ecommerce),
+      var(--ecommerce-opacity)
+    );
+  }
+  &::after,
+  &::before,
+  .line {
+    background-color: var(--ecommerce);
+  }
+}
+
+.service-card {
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    filter: blur(10px);
+  }
+
+  &::before {
+    top: 0;
+    right: 0;
+    left: auto;
+    transform: translate(26px, -26px);
+  }
+  &::after {
+    top: auto;
+    bottom: 0;
+    left: 0;
+    transform: translate(-50px, 50px);
+  }
+  figure {
+    box-shadow: 0px 4px 4px #00000085;
+  }
+}
