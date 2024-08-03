@@ -1,5 +1,6 @@
 import Header from "./components/Header";
 import Hero from "./components/Hero";
+import About from "./components/About";
 
 export default function Home() {
   return (
@@ -7,6 +8,7 @@ export default function Home() {
       <Header />
       <main className="md:px-12 px-5 py-2 flex flex-col justify-center items-center w-full gap-12">
         <Hero />
+        <About />
       </main>
       <footer></footer>
     </div>

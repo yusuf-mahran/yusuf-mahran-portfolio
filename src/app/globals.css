@@ -189,6 +189,12 @@ body {
   }
 }
 
+.color-primary-blue {
+  color: var(--primary-blue);
+}
+.bg-light-skyblue-after::after {
+  background-color: var(--light-skyblue);
+}
 .bg-light-gray {
   background-color: var(--light-gray);
 
@@ -203,6 +209,9 @@ body {
     border-right: none;
     border-bottom: 1px solid var(--medium-gray);
   }
+}
+.color-dark-gray {
+  color: var(--dark-gray);
 }
 
 .bg-white {
