@@ -2,6 +2,7 @@ import Header from "./components/Header";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Services from "./components/Services";
+import ProjectsSlider from "./components/ProjectsSlider";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
         <Hero />
         <About />
         <Services />
+        <ProjectsSlider />
       </main>
       <footer></footer>
     </div>
