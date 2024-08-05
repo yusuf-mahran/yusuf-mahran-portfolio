@@ -1,5 +1,6 @@
 import { Salsa } from "next/font/google";
 import "./globals.css";
+import Header from "./components/Header";
 
 const salsa = Salsa({ subsets: ["latin"], weight: "400" });
 
@@ -49,7 +50,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={salsa.className}>{children}</body>
+      <body className={salsa.className}>
+        <div className="w-full max-w-[1950px] mx-auto">
+          <Header />
+          {children}
+        </div>
+      </body>
     </html>
   );
 }

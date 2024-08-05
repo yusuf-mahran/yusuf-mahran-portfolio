@@ -3,6 +3,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { IoMoon } from "react-icons/io5";
 import { CgMenuLeftAlt } from "react-icons/cg";
+import Btn from "../utilities/Btn";
 
 export default function Header() {
   const [menu, setMenu] = useState(0);
@@ -69,7 +70,9 @@ export default function Header() {
         <button className="hover:scale-125 transition-all">
           <IoMoon className="text-2xl" />
         </button>
-        <button className="sm:inline hidden btn">Let&apos;s Talk</button>
+        <span className="sm:inline hidden">
+          <Btn href="/#contact">Let&apos;s Talk</Btn>
+        </span>
         <button
           className="md:hidden block p-1 rounded-lg text-xl"
           onClick={() => setMenu(!menu)}

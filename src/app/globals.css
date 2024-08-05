@@ -12,6 +12,7 @@
   --dark-gray: #5b5b5b;
   --white: #ffffff;
 
+  --bg-form: #cee0ea;
   --radial-gradient: radial-gradient(#000 76%, #fff 100%);
 
   /* Experience Colors */
@@ -36,10 +37,16 @@
     --light-gray: #1f1f1f;
     --medium-gray: #c5c5c5;
     --dark-gray: #5b5b5b;
-    --white: #000; */
+    --white: #000; 
+
+    --bg-form: #cee0ea;*/
   }
 }
 
+html,
+body {
+  scroll-behavior: smooth;
+}
 body {
   color: var(--primary-blue);
   background-color: var(--light-gray);
@@ -191,6 +198,9 @@ body {
 .color-primary-blue {
   color: var(--primary-blue);
 }
+.bg-light-skyblue {
+  background-color: var(--light-skyblue);
+}
 .bg-light-skyblue-after::after {
   background-color: var(--light-skyblue);
 }
@@ -200,6 +210,9 @@ body {
   &.after::after {
     background-color: var(--medium-gray);
   }
+}
+.bg-form {
+  background-color: var(--bg-form);
 }
 .border-r-light-gray {
   border-right: 1px solid var(--medium-gray);
