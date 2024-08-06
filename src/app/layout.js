@@ -1,6 +1,7 @@
 import { Salsa } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 const salsa = Salsa({ subsets: ["latin"], weight: "400" });
 
@@ -54,6 +55,7 @@ export default function RootLayout({ children }) {
         <div className="w-full max-w-[1950px] mx-auto">
           <Header />
           {children}
+          <Footer />
         </div>
       </body>
     </html>

@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Para from "./Para";
 
-export default function Social() {
+export default function Social({ color }) {
   return (
     <div className="flex flex-col justify-center items-start gap-4">
       <Link
@@ -16,7 +16,7 @@ export default function Social() {
           width={30}
           height={30}
         />
-        <Para color="color-primary-blue">
+        <Para color={color ? "color-light-gray" : "color-primary-blue"}>
           <span className="text-base">(+20)</span> <span>1279237596</span>
         </Para>
       </Link>
@@ -31,7 +31,9 @@ export default function Social() {
           width={30}
           height={30}
         />
-        <Para color="color-primary-blue">yousiefhamed1@gmail.com</Para>
+        <Para color={color ? "color-light-gray" : "color-primary-blue"}>
+          yousiefhamed1@gmail.com
+        </Para>
       </Link>
       <Link
         href="https://www.linkedin.com/in/youssef-hamed-helmy/"
@@ -44,7 +46,7 @@ export default function Social() {
           width={30}
           height={30}
         />
-        <Para color="color-primary-blue">
+        <Para color={color ? "color-light-gray" : "color-primary-blue"}>
           https://linkedin.com/in/youssef-hamed-helmy/
         </Para>
       </Link>
@@ -59,7 +61,9 @@ export default function Social() {
           width={30}
           height={30}
         />
-        <Para color="color-primary-blue">https://github.com/yousiefhamed</Para>
+        <Para color={color ? "color-light-gray" : "color-primary-blue"}>
+          https://github.com/yousiefhamed
+        </Para>
       </Link>
     </div>
   );
