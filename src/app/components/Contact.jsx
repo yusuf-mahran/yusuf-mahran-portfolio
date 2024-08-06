@@ -56,8 +56,7 @@ export default function Contact() {
   };
 
   useEffect(() => {
-    (displayCountryCode || displayWayOfContact) &&
-      document.addEventListener("click", handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
@@ -101,12 +100,12 @@ export default function Contact() {
           />
         </label>
         <label className="w-full flex flex-col justify-center items-start gap-2 relative">
-          <Para color="bg-primary-blue">Preferred Way to Contact:</Para>
+          <Para color="bg-primary-blue">Preferred Way of Contact:</Para>
           <p
             role="button"
             onClick={(e) => {
-              e.stopPropagation(); // Prevent triggering the document click listener
               setDisplayWayOfContact((prev) => !prev);
+              if (displayCountryCode) setDisplayCountryCode(false); // Close country code dropdown if open
             }}
             className="w-full absolute top-[40px] left-0 px-5 translate-y-1/2 flex justify-between items-center gap-5"
           >
@@ -116,6 +115,7 @@ export default function Contact() {
                 alt={`${selectedWayOfContact} icon`}
                 width={20}
                 height={20}
+                className="shadow-lg"
               />{" "}
               {selectedWayOfContact}
             </span>
@@ -144,6 +144,7 @@ export default function Contact() {
                     alt={`${app} icon`}
                     width={20}
                     height={20}
+                    className="shadow-lg"
                   />{" "}
                   {app}
                 </span>
@@ -157,8 +158,8 @@ export default function Contact() {
             <p
               role="button"
               onClick={(e) => {
-                e.stopPropagation(); // Prevent triggering the document click listener
                 setDisplayCountryCode((prev) => !prev);
+                if (displayWayOfContact) setDisplayWayOfContact(false); // Close country code dropdown if open
               }}
               className="w-20 absolute top-[35px] left-[10px] translate-y-1/2 border-2 rounded-md flex justify-center items-center gap-1"
             >
