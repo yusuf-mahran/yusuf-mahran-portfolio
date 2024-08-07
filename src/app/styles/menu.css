@@ -43,11 +43,12 @@
     width: 100%;
     min-height: 100svh;
     border-radius: 0 10px 10px 0;
-    transform: translateX(100%);
+    transform: scale(0);
     transition: all 0.2s ease-in-out;
 
     &.active {
       transform: translateX(0);
+      transform: scale(100%);
     }
 
     ul {
