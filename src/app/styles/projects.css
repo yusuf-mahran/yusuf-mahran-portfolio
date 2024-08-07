@@ -40,3 +40,7 @@
     transform: translateY(-5px) rotate(135deg);
   }
 }
+
+.border-white {
+  border-color: var(--white);
+}

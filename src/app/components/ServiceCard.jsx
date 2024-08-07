@@ -3,7 +3,7 @@ import Line from "../utilities/Line";
 import Para from "../utilities/Para";
 import SubHeading from "../utilities/SubHeading";
 import { FaCode } from "react-icons/fa6";
-import "./service-card.css";
+import "./../styles/service-card.css";
 
 export default function ServiceCard({ title, desc, color }) {
   return (

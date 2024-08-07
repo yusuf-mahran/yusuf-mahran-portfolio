@@ -17,6 +17,7 @@ export default function Hero() {
           <div className="md:mx-0 mx-auto">
             <h1 className="text-4xl">Hi, I&apos;m Youssef Hamed</h1>
             <p
+              suppressHydrationWarning
               className={`${CherryBomb.className} text-5xl title-gradient leading-[60px]`}
             >
               Front-end Developer

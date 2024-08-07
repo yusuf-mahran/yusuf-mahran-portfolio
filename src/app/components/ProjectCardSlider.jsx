@@ -5,8 +5,37 @@ import Para from "../utilities/Para";
 import Btn from "../utilities/Btn";
 import { HiExternalLink } from "react-icons/hi";
 import { FaReadme } from "react-icons/fa";
+import ProjectCardInfo from "./ProjectCardInfo";
+import { useEffect, useState } from "react";
 
-export default function ProjectCardSlider({ title, desc }) {
+export default function ProjectCardSlider({ projectDetails }) {
+  const [toggleInfoCard, setToggleInfoCard] = useState(false);
+  const { title, desc } = projectDetails;
+
+  const showInfo = (e) => {
+    // Ensure the click is outside the info card to close it
+    if (!e.target.closest(".info-card") && toggleInfoCard) {
+      setToggleInfoCard(false);
+    }
+  };
+
+  const handleClick = (e) => {
+    e.stopPropagation();
+    setToggleInfoCard((prev) => !prev);
+  };
+
+  useEffect(() => {
+    if (toggleInfoCard) {
+      document.addEventListener("click", showInfo);
+    } else {
+      document.removeEventListener("click", showInfo);
+    }
+
+    return () => {
+      document.removeEventListener("click", showInfo);
+    };
+  });
+
   return (
     <div className="project-card max-w-full px-[20px] flex-grow-0 flex-shrink-0 pb-10">
       <div className="bg-white flex flex-col gap-5 justify-center items-center w-full rounded-lg shadow-xl">
@@ -20,13 +49,7 @@ export default function ProjectCardSlider({ title, desc }) {
         <div className="w-full flex justify-center items-center text-center flex-col gap-3 px-2 pb-7">
           <SubHeading size="22px">{title}</SubHeading>
           <Line width="30%" />
-          <Para>
-            {desc
-              ? desc.length < 75
-                ? x
-                : `${desc.slice(0, 75)}...`
-              : "The Restaurant Online Menu project involves a digital menu that ca..."}
-          </Para>
+          <Para>{desc.length < 75 ? desc : `${desc.slice(0, 75)}...`} </Para>
           <div className="flex flex-wrap justify-center items-center gap-5 w-full">
             <Btn href="#" target="_blank">
               <HiExternalLink />
@@ -42,13 +65,19 @@ export default function ProjectCardSlider({ title, desc }) {
               />
               GitHub Repo
             </Btn>
-            <Btn color="bg-white dark:bg-neutral-800">
+            <Btn handleClick={handleClick} color="bg-white dark:bg-neutral-800">
               <FaReadme />
               Read More
             </Btn>
           </div>
         </div>
       </div>
+      {toggleInfoCard && (
+        <ProjectCardInfo
+          projectDetails={projectDetails}
+          handleClose={handleClick}
+        />
+      )}
     </div>
   );
 }

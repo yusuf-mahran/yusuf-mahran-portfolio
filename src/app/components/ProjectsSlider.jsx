@@ -13,14 +13,275 @@ export default function ProjectsSlider() {
     {
       title: "project 1",
       desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi sunt voluptate, ut dignissimos assumenda eligendi explicabo ratione asperiores optio illum, ipsum sed hic eos nisi cumque qui enim, consequuntur quo.",
+      img: "/projects/bin-sleem mockup.png",
+      github: "https://github.com/example",
+      live: "https://example.com",
+      technologies: ["reactjs", "nextjs", "vercel", "html", "css"],
+      features: [
+        {
+          title: "Key Features",
+          list: [
+            "lorem ipsum dolor sit amet erat, consectetur adipiscing",
+            "lorem ipsum dolor sit amet erat, consect",
+            "lorem ipsum dolor sit amet erat, consect",
+          ],
+        },
+        {
+          title: "Key Features",
+          list: [
+            "lorem ipsum dolor sit amet erat, consectetur adipiscing",
+            "lorem ipsum dolor sit amet erat, consect",
+            "lorem ipsum dolor sit amet erat, consect",
+          ],
+        },
+        {
+          title: "Key Features",
+          list: [
+            "lorem ipsum dolor sit amet erat, consectetur adipiscing",
+            "lorem ipsum dolor sit amet erat, consect",
+            "lorem ipsum dolor sit amet erat, consect",
+          ],
+        },
+      ],
     },
-    { title: "project 2" },
-    { title: "project 3" },
-    { title: "project 4" },
-    { title: "project 5" },
-    { title: "project 6" },
-    { title: "project 7" },
-    { title: "project 8" },
+    {
+      title: "project 2",
+      desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi sunt voluptate, ut dignissimos assumenda eligendi explicabo ratione asperiores optio illum, ipsum sed hic eos nisi cumque qui enim, consequuntur quo.",
+      img: "/projects/bin-sleem mockup.png",
+      github: "https://github.com/example",
+      live: "https://example.com",
+      technologies: ["reactjs", "nextjs", "vercel", "html", "css"],
+      features: [
+        {
+          title: "Key Features",
+          list: [
+            "lorem ipsum dolor sit amet erat, consectetur adipiscing",
+            "lorem ipsum dolor sit amet erat, consect",
+            "lorem ipsum dolor sit amet erat, consect",
+          ],
+        },
+        {
+          title: "Key Features",
+          list: [
+            "lorem ipsum dolor sit amet erat, consectetur adipiscing",
+            "lorem ipsum dolor sit amet erat, consect",
+            "lorem ipsum dolor sit amet erat, consect",
+          ],
+        },
+        {
+          title: "Key Features",
+          list: [
+            "lorem ipsum dolor sit amet erat, consectetur adipiscing",
+            "lorem ipsum dolor sit amet erat, consect",
+            "lorem ipsum dolor sit amet erat, consect",
+          ],
+        },
+      ],
+    },
+    {
+      title: "project 3",
+      desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi sunt voluptate, ut dignissimos assumenda eligendi explicabo ratione asperiores optio illum, ipsum sed hic eos nisi cumque qui enim, consequuntur quo.",
+      img: "/projects/bin-sleem mockup.png",
+      github: "https://github.com/example",
+      live: "https://example.com",
+      technologies: ["reactjs", "nextjs", "vercel", "html", "css"],
+      features: [
+        {
+          title: "Key Features",
+          list: [
+            "lorem ipsum dolor sit amet erat, consectetur adipiscing",
+            "lorem ipsum dolor sit amet erat, consect",
+            "lorem ipsum dolor sit amet erat, consect",
+          ],
+        },
+        {
+          title: "Key Features",
+          list: [
+            "lorem ipsum dolor sit amet erat, consectetur adipiscing",
+            "lorem ipsum dolor sit amet erat, consect",
+            "lorem ipsum dolor sit amet erat, consect",
+          ],
+        },
+        {
+          title: "Key Features",
+          list: [
+            "lorem ipsum dolor sit amet erat, consectetur adipiscing",
+            "lorem ipsum dolor sit amet erat, consect",
+            "lorem ipsum dolor sit amet erat, consect",
+          ],
+        },
+      ],
+    },
+    {
+      title: "project 4",
+      desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi sunt voluptate, ut dignissimos assumenda eligendi explicabo ratione asperiores optio illum, ipsum sed hic eos nisi cumque qui enim, consequuntur quo.",
+      img: "/projects/bin-sleem mockup.png",
+      github: "https://github.com/example",
+      live: "https://example.com",
+      technologies: ["reactjs", "nextjs", "vercel", "html", "css"],
+      features: [
+        {
+          title: "Key Features",
+          list: [
+            "lorem ipsum dolor sit amet erat, consectetur adipiscing",
+            "lorem ipsum dolor sit amet erat, consect",
+            "lorem ipsum dolor sit amet erat, consect",
+          ],
+        },
+        {
+          title: "Key Features",
+          list: [
+            "lorem ipsum dolor sit amet erat, consectetur adipiscing",
+            "lorem ipsum dolor sit amet erat, consect",
+            "lorem ipsum dolor sit amet erat, consect",
+          ],
+        },
+        {
+          title: "Key Features",
+          list: [
+            "lorem ipsum dolor sit amet erat, consectetur adipiscing",
+            "lorem ipsum dolor sit amet erat, consect",
+            "lorem ipsum dolor sit amet erat, consect",
+          ],
+        },
+      ],
+    },
+    {
+      title: "project 5",
+      desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi sunt voluptate, ut dignissimos assumenda eligendi explicabo ratione asperiores optio illum, ipsum sed hic eos nisi cumque qui enim, consequuntur quo.",
+      img: "/projects/bin-sleem mockup.png",
+      github: "https://github.com/example",
+      live: "https://example.com",
+      technologies: ["reactjs", "nextjs", "vercel", "html", "css"],
+      features: [
+        {
+          title: "Key Features",
+          list: [
+            "lorem ipsum dolor sit amet erat, consectetur adipiscing",
+            "lorem ipsum dolor sit amet erat, consect",
+            "lorem ipsum dolor sit amet erat, consect",
+          ],
+        },
+        {
+          title: "Key Features",
+          list: [
+            "lorem ipsum dolor sit amet erat, consectetur adipiscing",
+            "lorem ipsum dolor sit amet erat, consect",
+            "lorem ipsum dolor sit amet erat, consect",
+          ],
+        },
+        {
+          title: "Key Features",
+          list: [
+            "lorem ipsum dolor sit amet erat, consectetur adipiscing",
+            "lorem ipsum dolor sit amet erat, consect",
+            "lorem ipsum dolor sit amet erat, consect",
+          ],
+        },
+      ],
+    },
+    {
+      title: "project 6",
+      desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi sunt voluptate, ut dignissimos assumenda eligendi explicabo ratione asperiores optio illum, ipsum sed hic eos nisi cumque qui enim, consequuntur quo.",
+      img: "/projects/bin-sleem mockup.png",
+      github: "https://github.com/example",
+      live: "https://example.com",
+      technologies: ["reactjs", "nextjs", "vercel", "html", "css"],
+      features: [
+        {
+          title: "Key Features",
+          list: [
+            "lorem ipsum dolor sit amet erat, consectetur adipiscing",
+            "lorem ipsum dolor sit amet erat, consect",
+            "lorem ipsum dolor sit amet erat, consect",
+          ],
+        },
+        {
+          title: "Key Features",
+          list: [
+            "lorem ipsum dolor sit amet erat, consectetur adipiscing",
+            "lorem ipsum dolor sit amet erat, consect",
+            "lorem ipsum dolor sit amet erat, consect",
+          ],
+        },
+        {
+          title: "Key Features",
+          list: [
+            "lorem ipsum dolor sit amet erat, consectetur adipiscing",
+            "lorem ipsum dolor sit amet erat, consect",
+            "lorem ipsum dolor sit amet erat, consect",
+          ],
+        },
+      ],
+    },
+    {
+      title: "project 7",
+      desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi sunt voluptate, ut dignissimos assumenda eligendi explicabo ratione asperiores optio illum, ipsum sed hic eos nisi cumque qui enim, consequuntur quo.",
+      img: "/projects/bin-sleem mockup.png",
+      github: "https://github.com/example",
+      live: "https://example.com",
+      technologies: ["reactjs", "nextjs", "vercel", "html", "css"],
+      features: [
+        {
+          title: "Key Features",
+          list: [
+            "lorem ipsum dolor sit amet erat, consectetur adipiscing",
+            "lorem ipsum dolor sit amet erat, consect",
+            "lorem ipsum dolor sit amet erat, consect",
+          ],
+        },
+        {
+          title: "Key Features",
+          list: [
+            "lorem ipsum dolor sit amet erat, consectetur adipiscing",
+            "lorem ipsum dolor sit amet erat, consect",
+            "lorem ipsum dolor sit amet erat, consect",
+          ],
+        },
+        {
+          title: "Key Features",
+          list: [
+            "lorem ipsum dolor sit amet erat, consectetur adipiscing",
+            "lorem ipsum dolor sit amet erat, consect",
+            "lorem ipsum dolor sit amet erat, consect",
+          ],
+        },
+      ],
+    },
+    {
+      title: "project 8",
+      desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi sunt voluptate, ut dignissimos assumenda eligendi explicabo ratione asperiores optio illum, ipsum sed hic eos nisi cumque qui enim, consequuntur quo.",
+      img: "/projects/bin-sleem mockup.png",
+      github: "https://github.com/example",
+      live: "https://example.com",
+      technologies: ["reactjs", "nextjs", "vercel", "html", "css"],
+      features: [
+        {
+          title: "Key Features",
+          list: [
+            "lorem ipsum dolor sit amet erat, consectetur adipiscing",
+            "lorem ipsum dolor sit amet erat, consect",
+            "lorem ipsum dolor sit amet erat, consect",
+          ],
+        },
+        {
+          title: "Key Features",
+          list: [
+            "lorem ipsum dolor sit amet erat, consectetur adipiscing",
+            "lorem ipsum dolor sit amet erat, consect",
+            "lorem ipsum dolor sit amet erat, consect",
+          ],
+        },
+        {
+          title: "Key Features",
+          list: [
+            "lorem ipsum dolor sit amet erat, consectetur adipiscing",
+            "lorem ipsum dolor sit amet erat, consect",
+            "lorem ipsum dolor sit amet erat, consect",
+          ],
+        },
+      ],
+    },
   ];
 
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -95,8 +356,8 @@ export default function ProjectsSlider() {
         ref={sliderContainerRef}
         className="projects-slider-container w-full flex flex-nowrap justify-start items-stretch"
       >
-        {featuredProjects.map(({ title, desc }, index) => (
-          <ProjectCardSlider key={index} title={title} desc={desc} />
+        {featuredProjects.map((project, index) => (
+          <ProjectCardSlider key={index} projectDetails={project} />
         ))}
       </div>
       <div className="flex justify-center items-center gap-3 mx-auto -mt-14">
