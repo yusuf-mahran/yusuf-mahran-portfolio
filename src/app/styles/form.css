@@ -16,6 +16,7 @@ html.dark {
   .input-container,
   textarea {
     background-color: var(--bg-input);
+    color: var(--primary-blue);
   }
   .input:hover {
     background-color: var(--white);

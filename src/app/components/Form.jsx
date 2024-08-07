@@ -85,9 +85,11 @@ export default function Form() {
       <label className="w-full flex flex-col justify-center items-start gap-2 relative">
         <Para color="bg-primary-blue">Preferred Way of Contact:</Para>
         <div className="w-full relative">
-          <p
-            role="button"
-            onClick={(e) => {
+          <button
+            type="button"
+            aria-haspopup="listbox"
+            aria-expanded={displayWayOfContact}
+            onClick={() => {
               setDisplayWayOfContact((prev) => !prev);
               if (displayCountryCode) setDisplayCountryCode(false); // Close country code dropdown if open
             }}
@@ -104,24 +106,33 @@ export default function Form() {
               {selectedWayOfContact}
             </span>
             <IoIosArrowDown className="text-lg" />
-          </p>
+          </button>
           <input
             className="w-full h-14 pl-[100px] pr-5 rounded-md bg-white"
             type="text"
-            disabled={true}
+            readOnly
             required
           />
         </div>
-        <div
+        <ul
           ref={wayOfContactRef}
+          role="listbox"
           className={`w-full ${
             displayWayOfContact ? "flex" : "hidden"
           } input-container flex-col w-[150px] justify-start items-start gap-2 border-white border-t-8 border-b-8 px-2 bg-white rounded-lg absolute top-[110%] left-0 h-48 overflow-y-scroll shadow-lg z-10`}
         >
           {waysOfContact.map((app) => (
-            <Para key={app} size="md">
-              <span
-                onClick={() => setSelectedWayOfContact(app)}
+            <li
+              key={app}
+              aria-selected={selectedWayOfContact === app ? true : false}
+              role="option"
+              className="w-full"
+            >
+              <button
+                type="button"
+                onClick={() => {
+                  setSelectedWayOfContact(app);
+                }}
                 className="cursor-pointer input rounded-lg px-4 py-2 text-center w-full flex justify-start items-center gap-2 capitalize"
               >
                 <Image
@@ -132,18 +143,20 @@ export default function Form() {
                   className="shadow-lg"
                 />{" "}
                 {app}
-              </span>
-            </Para>
+              </button>
+            </li>
           ))}
-        </div>
+        </ul>
       </label>
       {selectedWayOfContact === "whatsapp" && (
         <div className="w-full flex flex-col justify-center items-start gap-2 relative">
           <Para color="bg-primary-blue">Phone Number:</Para>
           <div className="w-full relative">
-            <p
-              role="button"
-              onClick={(e) => {
+            <button
+              type="button"
+              aria-haspopup="listbox"
+              aria-expanded={displayCountryCode}
+              onClick={() => {
                 setDisplayCountryCode((prev) => !prev);
                 if (displayWayOfContact) setDisplayWayOfContact(false); // Close country code dropdown if open
               }}
@@ -151,7 +164,7 @@ export default function Form() {
             >
               <IoIosArrowDown className="text-lg" />
               <span className="cursor-pointer">{selectedCountryCode}</span>
-            </p>
+            </button>
             <input
               className="w-full h-14 pl-[100px] pr-5 rounded-md bg-white"
               type="text"
@@ -159,21 +172,31 @@ export default function Form() {
               required
             />
           </div>
-          <div
+          <ul
             ref={countryCodeRef}
+            role="listbox"
             className={`w-36 ${
               displayCountryCode ? "flex" : "hidden"
             } input-container flex-col w-[150px] justify-start items-start gap-2 border-white border-t-8 border-b-8 px-2 bg-white rounded-lg absolute top-[110%] left-0 h-48 overflow-y-scroll shadow-lg z-10`}
           >
             {countriesCodes.map(({ flag, cca2, idd }) => (
-              <Para key={cca2} size="md">
-                <span
-                  onClick={() => setSelectedCountryCode(`${flag} ${cca2}`)}
+              <li
+                key={cca2}
+                aria-selected={
+                  selectedCountryCode === `${flag} ${idd.root}` ? true : false
+                }
+                role="option"
+              >
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSelectedCountryCode(`${flag} ${idd.root}`);
+                  }}
                   className="inline-block cursor-pointer input rounded-lg px-4 py-2 text-center w-full"
-                >{`${flag} (${idd.root}) - ${cca2}`}</span>
-              </Para>
+                >{`${flag} (${idd.root}) - ${cca2}`}</button>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       )}
       {selectedWayOfContact === "email" && (
@@ -200,7 +223,7 @@ export default function Form() {
       )}
       {selectedWayOfContact === "facebook" && (
         <label className="w-full flex flex-col justify-center items-start gap-2">
-          <Para color="bg-primary-blue">Facebook Profile:</Para>
+          <Para color="bg-primary-blue">Facebook Profile Link:</Para>
           <input
             className="w-full h-14 px-5 rounded-md bg-white"
             type="text"
@@ -211,18 +234,18 @@ export default function Form() {
       )}
       {selectedWayOfContact === "instagram" && (
         <label className="w-full flex flex-col justify-center items-start gap-2">
-          <Para color="bg-primary-blue">Instagram Profile:</Para>
+          <Para color="bg-primary-blue">Instagram Username:</Para>
           <input
             className="w-full h-14 px-5 rounded-md bg-white"
             type="text"
-            placeholder="Ex. https://www.instagram.com/example/"
+            placeholder="@youssef_hamed"
             required
           />
         </label>
       )}
       {selectedWayOfContact === "linkedin" && (
         <label className="w-full flex flex-col justify-center items-start gap-2">
-          <Para color="bg-primary-blue">LinkedIn Profile:</Para>
+          <Para color="bg-primary-blue">LinkedIn Profile Link:</Para>
           <input
             className="w-full h-14 px-5 rounded-md bg-white"
             type="text"
@@ -233,33 +256,33 @@ export default function Form() {
       )}
       {selectedWayOfContact === "x (twitter)" && (
         <label className="w-full flex flex-col justify-center items-start gap-2">
-          <Para color="bg-primary-blue">Twitter Handle:</Para>
+          <Para color="bg-primary-blue">Twitter Username:</Para>
           <input
             className="w-full h-14 px-5 rounded-md bg-white"
             type="text"
-            placeholder="@example"
+            placeholder="@Youssef511"
             required
           />
         </label>
       )}
       {selectedWayOfContact === "discord" && (
         <label className="w-full flex flex-col justify-center items-start gap-2">
-          <Para color="bg-primary-blue">Discord Server:</Para>
+          <Para color="bg-primary-blue">Discord Username:</Para>
           <input
             className="w-full h-14 px-5 rounded-md bg-white"
             type="text"
-            placeholder="Ex. #project-development"
+            placeholder="Ex. Youssef#511"
             required
           />
         </label>
       )}
       {selectedWayOfContact === "other" && (
         <label className="w-full flex flex-col justify-center items-start gap-2">
-          <Para color="bg-primary-blue">Additional Information:</Para>
+          <Para color="bg-primary-blue">Specify:</Para>
           <input
             className="w-full h-14 px-5 rounded-md bg-white"
             type="text"
-            placeholder="Other Contact Information"
+            placeholder="Other way of contact"
             required
           />
         </label>
