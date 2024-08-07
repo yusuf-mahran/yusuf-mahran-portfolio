@@ -3,7 +3,10 @@ import ServiceCard from "./ServiceCard";
 
 export default function Services() {
   return (
-    <section className="w-full flex flex-col justify-center items-start gap-10">
+    <section
+      id="services"
+      className="w-full flex flex-col justify-center items-start gap-10"
+    >
       <Heading>I&apos;m Specialized In</Heading>
       <div className="flex flex-wrap justify-evenly items-stretch gap-10">
         <ServiceCard

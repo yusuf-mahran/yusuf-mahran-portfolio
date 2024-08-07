@@ -16,7 +16,7 @@ export default function Social({ color }) {
           width={30}
           height={30}
         />
-        <Para color={color ? "color-light-gray" : "color-primary-blue"}>
+        <Para color={color ? color : "color-primary-blue"}>
           <span className="text-base">(+20)</span> <span>1279237596</span>
         </Para>
       </Link>
@@ -31,7 +31,7 @@ export default function Social({ color }) {
           width={30}
           height={30}
         />
-        <Para color={color ? "color-light-gray" : "color-primary-blue"}>
+        <Para color={color ? color : "color-primary-blue"}>
           yousiefhamed1@gmail.com
         </Para>
       </Link>
@@ -46,7 +46,7 @@ export default function Social({ color }) {
           width={30}
           height={30}
         />
-        <Para color={color ? "color-light-gray" : "color-primary-blue"}>
+        <Para color={color ? color : "color-primary-blue"}>
           https://linkedin.com/in/youssef-hamed-helmy/
         </Para>
       </Link>
@@ -61,7 +61,7 @@ export default function Social({ color }) {
           width={30}
           height={30}
         />
-        <Para color={color ? "color-light-gray" : "color-primary-blue"}>
+        <Para color={color ? color : "color-primary-blue"}>
           https://github.com/yousiefhamed
         </Para>
       </Link>

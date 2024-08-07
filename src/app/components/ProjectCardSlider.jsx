@@ -4,6 +4,7 @@ import Line from "../utilities/Line";
 import Para from "../utilities/Para";
 import Btn from "../utilities/Btn";
 import { HiExternalLink } from "react-icons/hi";
+import { FaReadme } from "react-icons/fa";
 
 export default function ProjectCardSlider({ title, desc }) {
   return (
@@ -31,7 +32,7 @@ export default function ProjectCardSlider({ title, desc }) {
               <HiExternalLink />
               Live Demo
             </Btn>
-            <Btn color="bg-white" href="#" target="_blank">
+            <Btn color="bg-white dark:bg-neutral-800" href="#" target="_blank">
               <Image
                 src="/social/github.png"
                 alt="github icon"
@@ -41,14 +42,8 @@ export default function ProjectCardSlider({ title, desc }) {
               />
               GitHub Repo
             </Btn>
-            <Btn color="bg-white">
-              <Image
-                src="/icons/more.png"
-                alt="github icon"
-                width={20}
-                height={20}
-                className="w-5 h-5"
-              />
+            <Btn color="bg-white dark:bg-neutral-800">
+              <FaReadme />
               Read More
             </Btn>
           </div>

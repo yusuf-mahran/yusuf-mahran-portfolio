@@ -2,6 +2,7 @@ import { Salsa } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import ThemeProviderCustom from "./providers/ThemeProviderCustom";
 
 const salsa = Salsa({ subsets: ["latin"], weight: "400" });
 
@@ -51,12 +52,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={salsa.className}>
-        <div className="w-full max-w-[1950px] mx-auto">
-          <Header />
-          {children}
-          <Footer />
-        </div>
+      <body className={`${salsa.className} w-full overflow-x-hidden`}>
+        <ThemeProviderCustom>
+          <div className="w-full max-w-[1950px] mx-auto">
+            <Header />
+            {children}
+            <Footer />
+          </div>
+        </ThemeProviderCustom>
       </body>
     </html>
   );

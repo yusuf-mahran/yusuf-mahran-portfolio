@@ -1,0 +1,26 @@
+:root {
+  --bg-form: #cee0ea;
+  --bg-input: var(--light-gray);
+}
+html.dark {
+  --bg-form: #2c3940;
+  --bg-input: #262626;
+}
+
+.bg-form {
+  background-color: var(--bg-form);
+  color: var(--primary-blue);
+
+  input,
+  .input,
+  .input-container,
+  textarea {
+    background-color: var(--bg-input);
+  }
+  .input:hover {
+    background-color: var(--white);
+  }
+}
+.border-white {
+  border-color: var(--bg-input);
+}

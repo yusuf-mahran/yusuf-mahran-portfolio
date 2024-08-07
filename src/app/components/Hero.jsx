@@ -8,7 +8,10 @@ const CherryBomb = Cherry_Bomb_One({ subsets: ["latin"], weight: "400" });
 
 export default function Hero() {
   return (
-    <section className="py-7 flex flex-col justify-evenly items-center gap-8">
+    <section
+      id="home"
+      className="py-7 flex flex-col justify-evenly items-center gap-8"
+    >
       <div className="w-full grid md:grid-cols-2 grid-cols-1 justify-center items-center md:text-left text-center">
         <div className="flex justify-center items-start flex-col gap-8">
           <div className="md:mx-0 mx-auto">

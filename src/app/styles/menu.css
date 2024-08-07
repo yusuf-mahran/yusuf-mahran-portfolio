@@ -1,0 +1,58 @@
+.navigation-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    li a {
+      position: relative;
+    }
+
+    li a::after {
+      content: "";
+      width: 0;
+    }
+
+    li a:hover::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      width: 50%;
+      height: 2px;
+      border-radius: 50%;
+      background: linear-gradient(
+        115deg,
+        var(--primary-blue),
+        var(--secondary-blue)
+      );
+      transition: width 0.2s;
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (width < 768px) {
+    position: absolute;
+    top: 82px;
+    left: 0;
+    backdrop-filter: blur(50px);
+    width: 100%;
+    min-height: 100svh;
+    border-radius: 0 10px 10px 0;
+    transform: translateX(100%);
+    transition: all 0.2s ease-in-out;
+
+    &.active {
+      transform: translateX(0);
+    }
+
+    ul {
+      flex-direction: column;
+      gap: 50px;
+    }
+  }
+}

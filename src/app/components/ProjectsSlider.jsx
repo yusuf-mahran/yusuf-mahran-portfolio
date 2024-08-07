@@ -81,12 +81,15 @@ export default function ProjectsSlider() {
   };
 
   return (
-    <section className="w-full flex flex-col justify-center items-start gap-10">
+    <section
+      id="projects"
+      className="w-full flex flex-col justify-center items-start gap-10"
+    >
       <div className="w-full flex justify-between items-center flex-wrap gap-8">
         <Heading>Projects that I Proud Of</Heading>
-        <Btn href="/projects">
+        {/* <Btn href="/projects">
           Explore All Projects <FaArrowRightLong />
-        </Btn>
+        </Btn> */}
       </div>
       <div
         ref={sliderContainerRef}

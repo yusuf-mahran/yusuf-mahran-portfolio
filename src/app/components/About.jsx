@@ -7,7 +7,10 @@ import Social from "../utilities/Social";
 
 export default function About() {
   return (
-    <section className="grid lg:grid-cols-10 grid-cols-1 justify-center lg:items-start items-center gap-10">
+    <section
+      id="about"
+      className="grid lg:grid-cols-10 grid-cols-1 justify-center lg:items-start items-center gap-10"
+    >
       <div className="py-7 flex flex-col justify-center items-start gap-7 lg:order-2 lg:col-span-6">
         <Heading>My Success Story</Heading>
         <Para color="color-primary-blue" indent={true}>
