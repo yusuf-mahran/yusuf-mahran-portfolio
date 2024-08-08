@@ -28,10 +28,10 @@ export default function About() {
           innovative ideas to life.
         </Para>
         <Social />
-        <div className="flex justify-start items-center flex-wrap gap-3">
+        {/* <div className="flex justify-start items-center flex-wrap gap-3">
           <Para color="color-primary-blue">Are you still Curious?...</Para>
           <Btn href="/about">Go to my world!</Btn>
-        </div>
+        </div> */}
       </div>
       <div className="lg:order-1 lg:col-span-4 mx-auto w-full">
         <Image

@@ -12,9 +12,13 @@ export default function ProjectCardInfo({
   handleClose,
   toggleInfoCard,
 }) {
+  const [animationClass, setAnimationClass] = useState("fade-in");
+  const [readMoreBtn, setReadMoreBtn] = useState(
+    new Array(projectDetails.desc.length)
+  );
+
   const { title, desc, img, live, github, features, technologies } =
     projectDetails;
-  const [animationClass, setAnimationClass] = useState("fade-in");
 
   useEffect(() => {
     if (animationClass === "fade-out") {
@@ -26,8 +30,12 @@ export default function ProjectCardInfo({
   const handleCloseWithAnimation = (e) => {
     if (
       (e.target.closest("#closeBtn") || !e.target.closest(".info-card")) &&
-      toggleInfoCard
+      toggleInfoCard &&
+      e.type === "click"
     ) {
+      setAnimationClass("fade-out");
+    }
+    if (e.key === "Escape" && e.type === "keydown") {
       setAnimationClass("fade-out");
     }
   };
@@ -35,12 +43,15 @@ export default function ProjectCardInfo({
   useEffect(() => {
     if (toggleInfoCard) {
       document.addEventListener("click", handleCloseWithAnimation);
+      document.addEventListener("keydown", handleCloseWithAnimation);
     } else {
       document.removeEventListener("click", handleCloseWithAnimation);
+      document.removeEventListener("keydown", handleCloseWithAnimation);
     }
 
     return () => {
       document.removeEventListener("click", handleCloseWithAnimation);
+      document.removeEventListener("keydown", handleCloseWithAnimation);
     };
   });
 
@@ -53,12 +64,9 @@ export default function ProjectCardInfo({
           <SubHeading>{title}</SubHeading>
           <Line width="50%" height="3px" color="bg-light-skyblue" />
         </div>
-        <Para size="lg" color="color-dark-gray text-center">
-          {desc}
-        </Para>
         <Image
           src={img}
-          alt="bin-sleem mockup"
+          alt={`${title} mockup`}
           width={400}
           height={300}
           className="w-full rounded-lg shadow-lg max-w-[650px]"
@@ -83,6 +91,18 @@ export default function ProjectCardInfo({
             GitHub Repo
           </Btn>
         </div>
+        {desc.map((x, i) =>
+          x.title ? (
+            <Para key={i} size="lg" color="color-dark-gray text-left">
+              <span className="color-primary-blue text-xl">{x.title}:</span>{" "}
+              {x.content}
+            </Para>
+          ) : (
+            <Para key={i} size="lg" color="color-dark-gray text-center">
+              {x}
+            </Para>
+          )
+        )}
         {features.map((feature, i) => (
           <div
             key={i}
@@ -91,7 +111,7 @@ export default function ProjectCardInfo({
             <SubHeading size="22px">{feature.title}</SubHeading>
             <ul>
               {feature.list.map((listItem, i) => (
-                <li key={i} className="list-inside list-disc">
+                <li key={i} className="ml-5 my-2 list-outside list-disc">
                   {listItem}
                 </li>
               ))}
@@ -104,13 +124,13 @@ export default function ProjectCardInfo({
           </SubHeading>
           <ul className="flex justify-center items-center flex-wrap gap-5">
             {technologies.map((tech) => (
-              <li key={tech} className="h-8 w-auto">
+              <li key={tech} className=" h-10 w-auto">
                 <Image
                   src={`/tech/${tech}.png`}
                   alt={`${tech} icon`}
                   width={100}
                   height={100}
-                  className="h-full w-auto object-contain"
+                  className="h-full w-auto object-contain bg-[#fff] shadow-lg rounded-lg px-5 py-2"
                 />
               </li>
             ))}
