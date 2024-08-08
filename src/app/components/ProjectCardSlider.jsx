@@ -10,31 +10,12 @@ import { useEffect, useState } from "react";
 
 export default function ProjectCardSlider({ projectDetails }) {
   const [toggleInfoCard, setToggleInfoCard] = useState(false);
+
   const { title, desc } = projectDetails;
 
-  const showInfo = (e) => {
-    // Ensure the click is outside the info card to close it
-    if (!e.target.closest(".info-card") && toggleInfoCard) {
-      setToggleInfoCard(false);
-    }
-  };
-
-  const handleClick = (e) => {
-    e.stopPropagation();
+  const handleClick = () => {
     setToggleInfoCard((prev) => !prev);
   };
-
-  useEffect(() => {
-    if (toggleInfoCard) {
-      document.addEventListener("click", showInfo);
-    } else {
-      document.removeEventListener("click", showInfo);
-    }
-
-    return () => {
-      document.removeEventListener("click", showInfo);
-    };
-  });
 
   return (
     <div className="project-card max-w-full px-[20px] flex-grow-0 flex-shrink-0 pb-10">
@@ -76,6 +57,7 @@ export default function ProjectCardSlider({ projectDetails }) {
         <ProjectCardInfo
           projectDetails={projectDetails}
           handleClose={handleClick}
+          toggleInfoCard={toggleInfoCard}
         />
       )}
     </div>
