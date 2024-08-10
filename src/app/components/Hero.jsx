@@ -32,7 +32,7 @@ export default function Hero() {
           </div>
           <div className="md:mx-0 mx-auto">
             <Link
-              href="#"
+              href="/#projects"
               className="btn flex justify-center items-center gap-3"
             >
               View Work
