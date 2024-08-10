@@ -6,6 +6,7 @@ import Line from "../utilities/Line";
 import Para from "../utilities/Para";
 import SubHeading from "../utilities/SubHeading";
 import { IoIosArrowDown } from "react-icons/io";
+import BeautifulMessage from "../utilities/BeautifulMessage";
 import "./../styles/form.css";
 
 export default function Form() {
@@ -39,6 +40,8 @@ export default function Form() {
   });
 
   const [errors, setErrors] = useState({});
+  const [successMessage, setSuccessMessage] = useState([]);
+  const [submitted, setSubmitted] = useState(false);
 
   const validateForm = () => {
     const newErrors = {};
@@ -66,15 +69,86 @@ export default function Form() {
     return newErrors;
   };
 
-  const handleSubmit = (event) => {
+  const handleShowSuccessMessage = (status, message) => {
+    setSuccessMessage((prev) => {
+      return [...prev, { status, message, timeStamp: Date.now() }];
+    });
+  };
+
+  useEffect(() => {
+    if (successMessage.length) {
+      const timeoutId = setTimeout(() => {
+        setSuccessMessage((prev) => {
+          const newMessages = [...prev];
+          return newMessages.slice(1);
+        });
+      }, successMessage[0].timeStamp + 10000 - Date.now());
+
+      return () => clearTimeout(timeoutId);
+    }
+  }, [successMessage]);
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const validationErrors = validateForm();
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
+    if (submitted) {
+      handleShowSuccessMessage(
+        201,
+        "You've successfully submitted the form. Keep Calm and We will reach back to you in 24 hours. ;)"
+      );
       return;
     }
+
+    const validationErrors = validateForm();
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors((prev) => ({ ...prev, ...validationErrors }));
+      return;
+    }
+
+    if (Object.keys(errors).length > 0) {
+      handleShowSuccessMessage(
+        502,
+        "Please Enter a valid data before submitting so we can reach back to you."
+      );
+      return;
+    }
+
     // Submit form data logic here
-    console.log("Form submitted successfully!", formData);
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_LINK}/api/contactForm`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            ...formData,
+            wayOfContact: selectedWayOfContact,
+            countryCode: selectedCountryCode,
+          }),
+        }
+      );
+      if (!response.ok) {
+        handleShowSuccessMessage(
+          500,
+          "Failed to submit form data. Please Try Again!"
+        );
+        return;
+      }
+      handleShowSuccessMessage(
+        201,
+        `Form submitted successfully!\n We will get back to you soon!`
+      );
+    } catch (err) {
+      handleShowSuccessMessage(500, `${err}. Please try Again!`);
+    }
+    setFormData({
+      name: "",
+      email: "",
+      contactDetail: "",
+      subject: "",
+      message: "",
+    });
+    setSubmitted(true);
   };
 
   const handleInputChange = (e) => {
@@ -148,6 +222,38 @@ export default function Form() {
     setErrors(updatedErrors);
   };
 
+  const handleSubjectChange = (e) => {
+    handleInputChange(e);
+
+    const updatedErrors = { ...errors };
+
+    if (!e.target.value.trim()) {
+      updatedErrors.subject = "Subject is required.";
+    } else if (e.target.value.length > 50) {
+      updatedErrors.subject = "Subject must not exceed 50 characters.";
+    } else {
+      delete updatedErrors.subject;
+    }
+
+    setErrors(updatedErrors);
+  };
+
+  const handleMessageChange = (e) => {
+    handleInputChange(e);
+
+    const updatedErrors = { ...errors };
+
+    if (!e.target.value.trim()) {
+      updatedErrors.message = "Message is required.";
+    } else if (e.target.value.length > 1000) {
+      updatedErrors.message = "Message must not exceed 1000 characters.";
+    } else {
+      delete updatedErrors.message;
+    }
+
+    setErrors(updatedErrors);
+  };
+
   const getCountriesCodes = async () => {
     try {
       const response = await fetch(
@@ -183,257 +289,286 @@ export default function Form() {
   }, []);
 
   return (
-    <form
-      className="flex flex-col justify-center items-center gap-8 py-12 px-8 rounded-lg bg-form"
-      onSubmit={handleSubmit}
-    >
-      <div className="w-full flex justify-center items-center flex-col gap-3">
-        <SubHeading align="center">
-          We&apos;re delighted to hear from you
-        </SubHeading>
-        <Line width="150px" color="bg-light-skyblue" height="4px" />
-      </div>
-
-      <label className="w-full flex flex-col justify-center items-start gap-2">
-        <Para color="bg-primary-blue">Name:</Para>
-        <input
-          className={`w-full h-14 px-5 rounded-md bg-white ${
-            errors.name ? "border-red-500 border-2" : ""
-          }`}
-          type="text"
-          placeholder="Ex. Youssef Hamed"
-          name="name"
-          value={formData.name}
-          onChange={handleNameChange}
-          autoComplete="true"
-        />
-        {errors.name && <span className="text-red-500">{errors.name}</span>}
-      </label>
-
-      <label className="w-full flex flex-col justify-center items-start gap-2">
-        <Para color="bg-primary-blue">Email:</Para>
-        <input
-          className={`w-full h-14 px-5 rounded-md bg-white ${
-            errors.email ? "border-red-500 border-2" : ""
-          }`}
-          type="email"
-          placeholder="Ex. example@email.com"
-          name="email"
-          value={formData.email}
-          onChange={handleEmailChange}
-          autoComplete="true"
-        />
-        {errors.email && <span className="text-red-500">{errors.email}</span>}
-      </label>
-
-      <label className="w-full flex flex-col justify-center items-start gap-2 relative">
-        <Para color="bg-primary-blue">Preferred Way of Contact:</Para>
-        <div className="w-full relative">
-          <button
-            type="button"
-            aria-haspopup="listbox"
-            aria-expanded={displayWayOfContact}
-            onClick={() => {
-              setDisplayWayOfContact((prev) => !prev);
-              if (displayCountryCode) setDisplayCountryCode(false); // Close country code dropdown if open
-            }}
-            className="w-full absolute top-1/2 left-0 px-5 -translate-y-1/2 flex justify-between items-center gap-5"
-          >
-            <span className="cursor-pointer flex justify-center items-center gap-3 capitalize">
-              <Image
-                src={`/social/${selectedWayOfContact}.png`}
-                alt={`${selectedWayOfContact} icon`}
-                width={20}
-                height={20}
-                className="shadow-lg"
-              />{" "}
-              {selectedWayOfContact}
-            </span>
-            <IoIosArrowDown className="text-lg" />
-          </button>
-          <input
-            className="w-full h-14 pl-[100px] pr-5 rounded-md bg-white"
-            type="text"
-            readOnly
-          />
+    <>
+      <form
+        className="flex flex-col justify-center items-center gap-8 py-12 px-8 rounded-lg bg-form"
+        onSubmit={handleSubmit}
+      >
+        <div className="w-full flex justify-center items-center flex-col gap-3">
+          <SubHeading align="center">
+            We&apos;re delighted to hear from you
+          </SubHeading>
+          <Line width="150px" color="bg-light-skyblue" height="4px" />
         </div>
-        <ul
-          ref={wayOfContactRef}
-          role="listbox"
-          className={`w-full ${
-            displayWayOfContact ? "flex" : "hidden"
-          } input-container flex-col w-[150px] justify-start items-start gap-2 border-white border-t-8 border-b-8 px-2 bg-white rounded-lg absolute top-[110%] left-0 h-48 overflow-y-scroll shadow-lg z-10`}
-        >
-          {waysOfContact.map((app) => (
-            <li
-              key={app}
-              aria-selected={selectedWayOfContact === app ? true : false}
-              role="option"
-              className="w-full"
-            >
-              <button
-                type="button"
-                onClick={() => {
-                  setSelectedWayOfContact(app);
-                }}
-                className="cursor-pointer input rounded-lg px-4 py-2 text-center w-full flex justify-start items-center gap-2 capitalize"
-              >
-                <Image
-                  src={`/social/${app}.png`}
-                  alt={`${app} icon`}
-                  width={20}
-                  height={20}
-                  className="shadow-lg"
-                />{" "}
-                {app}
-              </button>
-            </li>
-          ))}
-        </ul>
-      </label>
 
-      {selectedWayOfContact === "whatsapp" && (
-        <div className="w-full flex flex-col justify-center items-start gap-2 relative">
-          <Para color="bg-primary-blue">Phone Number:</Para>
+        <label className="w-full flex flex-col justify-center items-start gap-2">
+          <Para color="bg-primary-blue">Name:</Para>
+          <input
+            className={`w-full h-14 px-5 rounded-md bg-white ${
+              errors.name ? "border-red-500 border-2" : ""
+            }`}
+            type="text"
+            placeholder="Ex. Youssef Hamed"
+            name="name"
+            value={formData.name}
+            onChange={handleNameChange}
+            autoComplete="true"
+            autoFocus="true"
+          />
+          {errors.name && <span className="text-red-500">{errors.name}</span>}
+        </label>
+
+        <label className="w-full flex flex-col justify-center items-start gap-2">
+          <Para color="bg-primary-blue">Email:</Para>
+          <input
+            className={`w-full h-14 px-5 rounded-md bg-white ${
+              errors.email ? "border-red-500 border-2" : ""
+            }`}
+            type="email"
+            placeholder="Ex. example@email.com"
+            name="email"
+            value={formData.email}
+            onChange={handleEmailChange}
+            autoComplete="true"
+          />
+          {errors.email && <span className="text-red-500">{errors.email}</span>}
+        </label>
+
+        <label className="w-full flex flex-col justify-center items-start gap-2 relative">
+          <Para color="bg-primary-blue">Preferred Way of Contact:</Para>
           <div className="w-full relative">
             <button
               type="button"
               aria-haspopup="listbox"
-              aria-expanded={displayCountryCode}
+              aria-expanded={displayWayOfContact}
               onClick={() => {
-                setDisplayCountryCode((prev) => !prev);
-                if (displayWayOfContact) setDisplayWayOfContact(false); // Close country code dropdown if open
+                setDisplayWayOfContact((prev) => !prev);
+                if (displayCountryCode) setDisplayCountryCode(false); // Close country code dropdown if open
               }}
-              className="w-20 absolute top-1/2 left-[10px] -translate-y-1/2 border-[1px] shadow-sm rounded-md flex justify-center items-center gap-1"
+              className="w-full absolute top-1/2 left-0 px-5 -translate-y-1/2 flex justify-between items-center gap-5"
             >
+              <span className="cursor-pointer flex justify-center items-center gap-3 capitalize">
+                <Image
+                  src={`/social/${selectedWayOfContact}.png`}
+                  alt={`${selectedWayOfContact} icon`}
+                  width={20}
+                  height={20}
+                  className="shadow-lg"
+                />{" "}
+                {selectedWayOfContact}
+              </span>
               <IoIosArrowDown className="text-lg" />
-              <span className="cursor-pointer">{selectedCountryCode}</span>
             </button>
             <input
-              className={`w-full h-14 pl-[100px] pr-5 rounded-md bg-white ${
-                errors.contactDetail ? "border-red-500 border-2" : ""
-              }`}
+              className="w-full h-14 pl-[100px] pr-5 rounded-md bg-white"
               type="text"
-              placeholder="123 456 7890"
-              name="contactDetail"
-              value={formData.contactDetail}
-              onChange={handleContactDetailsChange}
+              readOnly
             />
           </div>
-          {errors.contactDetail && (
-            <span className="text-red-500">{errors.contactDetail}</span>
-          )}
-          <span
-            className={`${
-              (formData.contactDetail.length !== 0 &&
-                formData.contactDetail.length !== 11) ||
-              errors.contactDetail
-                ? "text-red-500 after:content-['✘'] after:pl-1"
-                : formData.contactDetail.length !== 0 &&
-                  "text-green-600 after:content-['✔'] after:pl-1"
-            } absolute top-full right-0 sm:inline-block hidden`}
-          >
-            {formData.contactDetail.length}/11
-          </span>
           <ul
-            ref={countryCodeRef}
+            ref={wayOfContactRef}
             role="listbox"
-            className={`w-36 ${
-              displayCountryCode ? "flex" : "hidden"
+            className={`w-full ${
+              displayWayOfContact ? "flex" : "hidden"
             } input-container flex-col w-[150px] justify-start items-start gap-2 border-white border-t-8 border-b-8 px-2 bg-white rounded-lg absolute top-[110%] left-0 h-48 overflow-y-scroll shadow-lg z-10`}
           >
-            {countriesCodes?.map(
-              (country) =>
-                country?.idd?.root && (
-                  <li
-                    key={country.cca2}
-                    aria-selected={
-                      selectedCountryCode ===
-                      `${country.flag} ${country.idd.root}`
-                        ? true
-                        : false
-                    }
-                    role="option"
-                    className="w-full"
-                  >
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setSelectedCountryCode(
-                          `${country.flag} ${country.idd.root}`
-                        );
-                      }}
-                      className="cursor-pointer input rounded-lg px-4 py-2 text-center w-full flex justify-start items-center gap-2"
-                    >
-                      {country.flag} {country.idd.root} {country.cca2}
-                    </button>
-                  </li>
-                )
-            )}
+            {waysOfContact.map((app) => (
+              <li
+                key={app}
+                aria-selected={selectedWayOfContact === app ? true : false}
+                role="option"
+                className="w-full"
+              >
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSelectedWayOfContact(app);
+                    setFormData((prev) => ({
+                      ...prev,
+                      contactDetail: "",
+                    }));
+                  }}
+                  className="cursor-pointer input rounded-lg px-4 py-2 text-center w-full flex justify-start items-center gap-2 capitalize"
+                >
+                  <Image
+                    src={`/social/${app}.png`}
+                    alt={`${app} icon`}
+                    width={20}
+                    height={20}
+                    className="shadow-lg"
+                  />{" "}
+                  {app}
+                </button>
+              </li>
+            ))}
           </ul>
-        </div>
-      )}
+        </label>
 
-      {selectedWayOfContact !== "whatsapp" &&
-        selectedWayOfContact !== "email" && (
-          <label className="w-full flex flex-col justify-center items-start gap-2">
-            <Para color="bg-primary-blue">
-              {selectedWayOfContact.charAt(0).toUpperCase() +
-                selectedWayOfContact.slice(1)}{" "}
-              Username:
-            </Para>
-            <input
-              className={`w-full h-14 px-5 rounded-md bg-white ${
-                errors.contactDetail ? "border-red-500 border-2" : ""
-              }`}
-              type="text"
-              placeholder={`Enter your ${selectedWayOfContact} username`}
-              name="contactDetail"
-              value={formData.contactDetail}
-              onChange={handleContactDetailsChange}
-            />
+        {selectedWayOfContact === "whatsapp" && (
+          <div className="w-full flex flex-col justify-center items-start gap-2 relative">
+            <Para color="bg-primary-blue">Phone Number:</Para>
+            <div className="w-full relative">
+              <button
+                type="button"
+                aria-haspopup="listbox"
+                aria-expanded={displayCountryCode}
+                onClick={() => {
+                  setDisplayCountryCode((prev) => !prev);
+                  if (displayWayOfContact) setDisplayWayOfContact(false); // Close country code dropdown if open
+                }}
+                className="w-20 absolute top-1/2 left-[10px] -translate-y-1/2 border-[1px] shadow-sm rounded-md flex justify-center items-center gap-1"
+              >
+                <IoIosArrowDown className="text-lg" />
+                <span className="cursor-pointer">{selectedCountryCode}</span>
+              </button>
+              <input
+                className={`w-full h-14 pl-[100px] pr-5 rounded-md bg-white ${
+                  errors.contactDetail ? "border-red-500 border-2" : ""
+                }`}
+                type="text"
+                placeholder="123 456 7890"
+                name="contactDetail"
+                value={formData.contactDetail}
+                onChange={handleContactDetailsChange}
+              />
+            </div>
             {errors.contactDetail && (
               <span className="text-red-500">{errors.contactDetail}</span>
             )}
-          </label>
+            <span
+              className={`${
+                (formData.contactDetail.length !== 0 &&
+                  formData.contactDetail.length !== 11) ||
+                errors.contactDetail
+                  ? "text-red-500 after:content-['✘'] after:pl-1"
+                  : formData.contactDetail.length !== 0 &&
+                    "text-green-600 after:content-['✔'] after:pl-1"
+              } absolute top-full right-0 sm:inline-block hidden`}
+            >
+              {formData.contactDetail.length}/11
+            </span>
+            <ul
+              ref={countryCodeRef}
+              role="listbox"
+              className={`w-36 ${
+                displayCountryCode ? "flex" : "hidden"
+              } input-container flex-col w-[150px] justify-start items-start gap-2 border-white border-t-8 border-b-8 px-2 bg-white rounded-lg absolute top-[110%] left-0 h-48 overflow-y-scroll shadow-lg z-10`}
+            >
+              {countriesCodes?.map(
+                (country) =>
+                  country?.idd?.root && (
+                    <li
+                      key={country.cca2}
+                      aria-selected={
+                        selectedCountryCode ===
+                        `${country.flag} ${country.idd.root}`
+                          ? true
+                          : false
+                      }
+                      role="option"
+                      className="w-full"
+                    >
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setSelectedCountryCode(
+                            `${country.flag} ${country.idd.root}`
+                          );
+                          setFormData((prev) => ({
+                            ...prev,
+                            contactDetail: "",
+                          }));
+                        }}
+                        className="cursor-pointer input rounded-lg px-4 py-2 text-center w-full flex justify-start items-center gap-2"
+                      >
+                        {country.flag} {country.idd.root} {country.cca2}
+                      </button>
+                    </li>
+                  )
+              )}
+            </ul>
+          </div>
         )}
 
-      <label className="w-full flex flex-col justify-center items-start gap-2">
-        <Para color="bg-primary-blue">Subject:</Para>
-        <input
-          className={`w-full h-14 px-5 rounded-md bg-white ${
-            errors.subject ? "border-red-500 border-2" : ""
-          }`}
-          type="text"
-          placeholder="What would you like to talk about?"
-          name="subject"
-          value={formData.subject}
-          onChange={handleInputChange}
-        />
-        {errors.subject && (
-          <span className="text-red-500">{errors.subject}</span>
-        )}
-      </label>
+        {selectedWayOfContact !== "whatsapp" &&
+          selectedWayOfContact !== "email" && (
+            <label className="w-full flex flex-col justify-center items-start gap-2">
+              <Para color="bg-primary-blue">
+                {selectedWayOfContact.charAt(0).toUpperCase() +
+                  selectedWayOfContact.slice(1)}{" "}
+                Username:
+              </Para>
+              <input
+                className={`w-full h-14 px-5 rounded-md bg-white ${
+                  errors.contactDetail ? "border-red-500 border-2" : ""
+                }`}
+                type="text"
+                placeholder={`Enter your ${selectedWayOfContact} username`}
+                name="contactDetail"
+                value={formData.contactDetail}
+                onChange={handleContactDetailsChange}
+              />
+              {errors.contactDetail && (
+                <span className="text-red-500">{errors.contactDetail}</span>
+              )}
+            </label>
+          )}
 
-      <label className="w-full flex flex-col justify-center items-start gap-2">
-        <Para color="bg-primary-blue">Message:</Para>
-        <textarea
-          className={`w-full h-48 p-5 rounded-md bg-white ${
-            errors.message ? "border-red-500 border-2" : ""
-          }`}
-          placeholder="Feel free to ask for more details about my work..."
-          name="message"
-          value={formData.message}
-          onChange={handleInputChange}
-        />
-        {errors.message && (
-          <span className="text-red-500">{errors.message}</span>
-        )}
-      </label>
+        <label className="w-full flex flex-col justify-center items-start gap-2">
+          <Para color="bg-primary-blue">Subject:</Para>
+          <input
+            className={`w-full h-14 px-5 rounded-md bg-white ${
+              errors.subject ? "border-red-500 border-2" : ""
+            }`}
+            type="text"
+            placeholder="What would you like to talk about?"
+            name="subject"
+            value={formData.subject}
+            onChange={handleSubjectChange}
+            autoComplete="false"
+          />
+          {errors.subject && (
+            <span className="text-red-500">{errors.subject}</span>
+          )}
+        </label>
 
-      <Btn onClick={handleSubmit} type="submit">
-        Send
-      </Btn>
-    </form>
+        <label className="w-full flex flex-col justify-center items-start gap-2 relative">
+          <Para color="bg-primary-blue">Message:</Para>
+          <textarea
+            className={`w-full h-48 p-5 rounded-md bg-white ${
+              errors.message ? "border-red-500 border-2" : ""
+            }`}
+            placeholder="Feel free to ask for more details about my work..."
+            name="message"
+            value={formData.message}
+            onChange={handleMessageChange}
+          />
+          {errors.message && (
+            <span className="text-red-500">{errors.message}</span>
+          )}
+          <span
+            className={`${
+              formData.message.length > 1000 || errors.message
+                ? "text-red-500 after:content-['✘'] after:pl-1"
+                : "text-black"
+            } absolute top-full right-0 sm:inline-block hidden`}
+          >
+            {formData.message.length}/1000
+          </span>
+        </label>
+
+        <Btn type="submit">Send</Btn>
+      </form>
+      <div className="fixed top-28 left-0 flex flex-col justify-center items-center gap-3 transition-all">
+        {successMessage &&
+          successMessage.map(({ status, message, timeStamp }) => (
+            <BeautifulMessage
+              key={timeStamp}
+              status={status}
+              message={message}
+            />
+          ))}
+      </div>
+    </>
   );
 }
