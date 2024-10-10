@@ -83,6 +83,11 @@ export default function Header() {
           {/* <li>
             <Link href="/">Testimonials</Link>
           </li> */}
+          <div className="lg:hidden flex justify-center items-center gap-2">
+            <span className="inline sm:hidden">
+              <Btn href="/#contact">Let&apos;s Talk</Btn>
+            </span>
+          </div>
         </ul>
       </nav>
       <div className="flex justify-center items-center gap-2">
