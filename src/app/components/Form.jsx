@@ -140,6 +140,7 @@ export default function Form() {
       );
     } catch (err) {
       handleShowSuccessMessage(500, `${err}. Please try Again!`);
+      return;
     }
     setFormData({
       name: "",
@@ -313,7 +314,6 @@ export default function Form() {
             value={formData.name}
             onChange={handleNameChange}
             autoComplete="true"
-            autoFocus="true"
           />
           {errors.name && <span className="text-red-500">{errors.name}</span>}
         </label>
