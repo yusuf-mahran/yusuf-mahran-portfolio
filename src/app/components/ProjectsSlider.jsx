@@ -333,7 +333,7 @@ export default function ProjectsSlider() {
       className="w-full flex flex-col justify-center items-start gap-10"
     >
       <div className="w-full flex justify-between items-center flex-wrap gap-8">
-        <Heading>Projects that I&aps;m Proud Of</Heading>
+        <Heading>Projects that I&apos;m Proud Of</Heading>
         {/* <Btn href="/projects">
           Explore All Projects <FaArrowRightLong />
         </Btn> */}
