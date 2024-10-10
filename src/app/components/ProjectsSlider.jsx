@@ -11,75 +11,66 @@ import { IoIosArrowDropleftCircle } from "react-icons/io";
 export default function ProjectsSlider() {
   const featuredProjects = [
     {
-      title: "Appie Landing Page",
+      title: "Investment Dashboard",
       desc: [
         {
           title: "Overview",
           content:
-            "The Appie Landing Page project involves creating a landing page for a service application using HTML and CSS. This project was based on a WordPress theme tutorial and aimed to replicate the design and functionality in pure HTML and CSS.",
+            "An interactive investment dashboard built with native HTML and CSS, designed to showcase various investment analysis cards with pixel-perfect precision, based on the provided Figma design. The dashboard adapts beautifully to different screen sizes, ensuring a fully responsive and seamless user experience across devices. The project emphasizes clean code and a focus on UI/UX design, delivering both aesthetics and functionality.",
         },
         {
           title: "Description",
           content:
-            "Developed a landing page for a service application called Appie. This project required translating a WordPress theme tutorial into a fully functional landing page using HTML and CSS. The landing page is designed to be responsive and visually appealing, with a focus on showcasing the app's features and benefits.",
+            "The Investment Dashboard is a web application that displays various investment analysis cards based on the provided Figma design. The cards include information such as the investment name, investment value, and projected return. The dashboard is fully responsive and optimized for mobile devices, ensuring a seamless user experience across devices. The project emphasizes clean code and a focus on UI/UX design, delivering both aesthetics and functionality.",
         },
       ],
-      img: "/projects/appie mockup.png",
-      github: "https://github.com/yousiefhamed/appie/",
-      live: "https://appie-hamed.vercel.app",
-      technologies: [
-        "html",
-        "css",
-        "figma",
-        "git",
-        "github",
-        "scss",
-        "vercel",
-        "vscode",
-      ],
+      img: "/projects/small/tradingo mockup.png",
+      github: "",
+      live: "",
+      technologies: ["html", "css", "js", "git", "github", "vercel", "vscode"],
       features: [
         {
           title: "Key Business Value",
           list: [
-            "Enhanced User Engagement: Provided a visually appealing and informative landing page to attract potential users.",
-            "Improved Conversion Rates: Optimized the landing page layout to increase sign-ups and conversions.",
-            "Cost-effective Solution: Implemented a high-quality landing page without the need for complex WordPress integration.",
+            "Enhanced User Experience: Provides a visually appealing and informative investment dashboard, enabling users to easily analyze and compare their investments.",
+            "Improved Conversion Rates: Optimized the dashboard layout to increase sign-ups and conversions.",
+            "Cost-effective Solution: Implemented a high-quality investment dashboard without the need for complex WordPress integration.",
+          ],
+        },
+        {
+          title: "Acknowledgments",
+          list: [
+            "This project was developed as part of an assignment and tutorial, emphasizing the practical application of HTML and CSS in theme development.",
           ],
         },
       ],
     },
     {
-      title: "LesslessVPN Theme",
+      title: "Login page test",
       desc: [
         {
           title: "Overview",
-          content: `This project involved developing a custom WordPress theme called "LesslessVPN." The goal was to convert the provided design into a fully responsive and visually appealing layout using native HTML and CSS.`,
+          content:
+            "This project involved creating a simple login page for a fictional website. The login page was designed using HTML, CSS, and JavaScript, and it integrated a custom-made password strength indicator and a remember me feature using local storage. The project emphasizes clean code, user-friendly design, and a focus on security and privacy, ensuring that the login process is secure and enjoyable for users.",
+        },
+      ],
+      img: "/projects/small/login-test mockup.png",
+      github: "",
+      live: "",
+      technologies: ["html", "css", "js", "git", "github", "vercel", "vscode"],
+      features: [
+        {
+          title: "Key Business Value",
+          list: [
+            "Enhanced User Experience: Provides a visually appealing and user-friendly login page, enabling users to easily access their account and securely login.",
+            "Improved Conversion Rates: Optimized the login page layout to increase sign-ups and conversions.",
+            "Cost-effective Solution: Implemented a high-quality login page without the need for complex integration.",
+          ],
         },
         {
           title: "Acknowledgments",
-          content:
-            "This project was developed as part of an assignment and tutorial, emphasizing the practical application of HTML and CSS in theme development.",
-        },
-      ],
-      img: "/projects/laslesvpn mockup.png",
-      github: "https://github.com/yousiefhamed/lasles_vpn_landing_page",
-      live: "https://lasles-vpn-hamed.vercel.app/",
-      technologies: [
-        "html",
-        "css",
-        "scss",
-        "git",
-        "github",
-        "vercel",
-        "vscode",
-      ],
-      features: [
-        {
-          title: "Key Features",
           list: [
-            "Responsive Design: Ensured compatibility across various devices and screen sizes.",
-            "Performance Optimization: Followed best practices to enhance load times and overall user experience.",
-            "Clean and Maintainable Code: Wrote well-structured HTML and CSS to facilitate future updates and modifications.",
+            "This project was developed as part of an assignment, emphasizing the practical application of HTML and CSS in theme development.",
           ],
         },
       ],
@@ -98,7 +89,7 @@ export default function ProjectsSlider() {
             "Azkar AlMuslim is a web application that dynamically displays Azkar based on the current time of day. If accessed in the morning, it shows morning Azkar, and in the evening, it shows evening Azkar. Users can also manually switch between the morning and evening Azkar using a toggle button. The application is fully responsive and optimized for mobile devices, ensuring a seamless user experience.",
         },
       ],
-      img: "/projects/azkar mockup.png",
+      img: "/projects/small/azkar mockup.png",
       github: "https://github.com/yousiefhamed/Azkar/",
       live: "https://azkar-youssef.vercel.app/",
       technologies: ["html", "css", "js", "git", "github", "vercel", "vscode"],
@@ -127,7 +118,7 @@ export default function ProjectsSlider() {
             "Developed an interactive online menu for a local restaurant, allowing customers to scan a QR code and view the menu on their devices. This project aimed to enhance customer engagement and provide a modern, contactless dining experience.",
         },
       ],
-      img: "/projects/bin-saleem mockup.png",
+      img: "/projects/small/bin-saleem mockup.png",
       github: "https://github.com/yousiefhamed/BinSaleemMenu/",
       live: "https://bin-saleem-menu.vercel.app/",
       technologies: ["html", "css", "git", "github", "vercel", "vscode"],
@@ -156,7 +147,7 @@ export default function ProjectsSlider() {
             "Kanban Board is a to-do list application that helps users organize their tasks into three categories: To Do, In Progress, and Done. Tasks can be moved between these categories using drag-and-drop functionality or buttons. The application is fully responsive, ensuring a seamless experience on both mobile and desktop devices. Task data is saved to local storage, so users' progress is retained even after refreshing or closing the browser.",
         },
       ],
-      img: "/projects/kanban-board mockup.png",
+      img: "/projects/small/kanban-board mockup.png",
       github: "https://github.com/yousiefhamed/kanaban-board/",
       live: "https://kanaban-board.vercel.app/",
       technologies: ["html", "css", "js", "git", "github", "vercel", "vscode"],
@@ -183,7 +174,7 @@ export default function ProjectsSlider() {
           content: `In "Guess My Number," players enter guesses in an attempt to match a hidden number between 1 and 20. The game provides feedback on whether the guess is too high, too low, or correct. The UI dynamically updates to reflect the player's progress, displaying messages and changing styles based on win or loss conditions. The game's design emphasizes a clean and engaging user experience.`,
         },
       ],
-      img: "/projects/guess-my-number mockup.png",
+      img: "/projects/small/guess-my-number mockup.png",
       github: "https://github.com/yousiefhamed/guess_my_number",
       live: "https://yousiefhamed.github.io/guess_my_number/",
       technologies: ["html", "css", "js", "git", "github", "vercel", "vscode"],
@@ -210,7 +201,7 @@ export default function ProjectsSlider() {
           content: `This project features a digital business card designed to provide essential information at a glance. The card includes sections for name, job title, contact details, and social media links. It was developed as part of a challenge to replicate a provided design with precision, focusing on responsive layout, typography, and visual aesthetics.`,
         },
       ],
-      img: "/projects/business-card mockup.png",
+      img: "/projects/small/business-card mockup.png",
       github: "https://github.com/yousiefhamed/business-card",
       live: "https://yousiefhamed.github.io/business-card/",
       technologies: [
@@ -245,7 +236,7 @@ export default function ProjectsSlider() {
           content: `This UI design features a grid of cards, each representing a different project. The cards include details such as the project name, a brief description, the tech stack used, and a link to the project. The design is responsive and adapts to different screen sizes, ensuring a consistent user experience across devices. The layout emphasizes clarity and accessibility, making it easy for users to find and interact with project information.`,
         },
       ],
-      img: "/projects/projects-tracking-card mockup.png",
+      img: "/projects/small/projects-tracking-card mockup.png",
       github: "https://github.com/yousiefhamed/projects-tracking-card",
       live: "https://yousiefhamed.github.io/projects-tracking-card/",
       technologies: [
