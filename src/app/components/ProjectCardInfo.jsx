@@ -72,7 +72,7 @@ export default function ProjectCardInfo({
           className="w-full rounded-lg shadow-lg max-w-[650px]"
         />
         <div className="flex flex-wrap justify-center items-center gap-5 w-full">
-          <Btn href={live} target="_blank">
+          <Btn href={live} target="_blank" minWidth={161}>
             <HiExternalLink />
             Live Demo
           </Btn>
@@ -80,6 +80,7 @@ export default function ProjectCardInfo({
             color="bg-white dark:bg-neutral-800"
             href={github}
             target="_blank"
+            minWidth={161}
           >
             <Image
               src="/social/github.png"

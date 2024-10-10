@@ -17,13 +17,13 @@ export default function ProjectCardSlider({ projectDetails, index }) {
 
   return (
     <div className="max-w-full px-[20px] flex-grow-0 flex-shrink-0 pb-10">
-      <div className="bg-white grid grid-cols-1 lg:grid-cols-2 gap-5 justify-start items-center w-full h-full rounded-lg shadow-xl max-w-[720px] lg:max-w-[1200px]">
+      <div className="bg-white grid grid-cols-1 lg:grid-cols-2 gap-5 justify-start items-center w-full h-full rounded-lg shadow-xl max-w-[720px] lg:max-w-[1200px] overflow-hidden">
         <Image
           src={img}
           alt={`${title} Mockup`}
           width={400}
           height={236}
-          className={`w-full h-full object-cover rounded-lg ${
+          className={`w-full h-full object-cover rounded-lg shadow-lg ${
             index % 2 !== 0 ? "lg:order-2 3xl:order-1" : ""
           }`}
         />
