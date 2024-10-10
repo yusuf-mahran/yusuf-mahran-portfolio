@@ -2,11 +2,9 @@ import Image from "next/image";
 import SubHeading from "../utilities/SubHeading";
 import Line from "../utilities/Line";
 import Para from "../utilities/Para";
-import Btn from "../utilities/Btn";
-import { HiExternalLink } from "react-icons/hi";
-import { FaReadme } from "react-icons/fa";
+import ProjectBtns from "../utilities/ProjectBtns";
 import ProjectCardInfo from "./ProjectCardInfo";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function ProjectCardSlider({ projectDetails }) {
   const [toggleInfoCard, setToggleInfoCard] = useState(false);
@@ -39,30 +37,12 @@ export default function ProjectCardSlider({ projectDetails }) {
               ? desc[0]
               : `${desc[0].slice(0, 75)}...`}
           </Para>
-          <div className="flex flex-wrap justify-center items-center gap-5 w-full">
-            <Btn href={live} target="_blank">
-              <HiExternalLink />
-              Live Demo
-            </Btn>
-            <Btn
-              color="bg-white dark:bg-neutral-800"
-              href={github}
-              target="_blank"
-            >
-              <Image
-                src="/social/github.png"
-                alt="github icon"
-                width={20}
-                height={20}
-                className="w-5 h-5"
-              />
-              GitHub Repo
-            </Btn>
-            <Btn handleClick={handleClick} color="bg-white dark:bg-neutral-800">
-              <FaReadme />
-              Read More
-            </Btn>
-          </div>
+          <ProjectBtns
+            demo={live}
+            code={github}
+            handleClick={handleClick}
+            alwaysCenter={true}
+          />
         </div>
       </div>
       {toggleInfoCard && (
