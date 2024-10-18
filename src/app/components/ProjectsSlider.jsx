@@ -25,8 +25,8 @@ export default function ProjectsSlider() {
         },
       ],
       img: "/projects/small/tradingo mockup.png",
-      github: "",
-      live: "",
+      github: "https://github.com/yousiefhamed/technical_test",
+      live: "https://yousiefhamed.github.io/technical_test/overview/index.html",
       technologies: ["html", "css", "js", "git", "github", "vercel", "vscode"],
       features: [
         {
@@ -55,8 +55,8 @@ export default function ProjectsSlider() {
         },
       ],
       img: "/projects/small/login-test mockup.png",
-      github: "",
-      live: "",
+      github: "https://github.com/yousiefhamed/technical_test",
+      live: "https://yousiefhamed.github.io/technical_test/login/index.html",
       technologies: ["html", "css", "js", "git", "github", "vercel", "vscode"],
       features: [
         {
