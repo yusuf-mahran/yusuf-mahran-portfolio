@@ -309,7 +309,7 @@ export default function Form() {
               errors.name ? "border-red-500 border-2" : ""
             }`}
             type="text"
-            placeholder="Ex. Youssef Hamed"
+            placeholder="Ex. Yusuf Mahran"
             name="name"
             value={formData.name}
             onChange={handleNameChange}
