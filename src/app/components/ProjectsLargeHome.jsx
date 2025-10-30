@@ -231,7 +231,7 @@ export default function ProjectsSlider() {
       ],
     },
     {
-      title: "Youssef Hamed's Portfolio Website",
+      title: "Yusuf Mahran's Portfolio Website",
       desc: [
         {
           title: "Overview",
@@ -245,8 +245,8 @@ export default function ProjectsSlider() {
         },
       ],
       img: "/projects/large/new-portfolio mockup.png",
-      github: "https://github.com/yousiefhamed/youssef-hamed-portfolio",
-      live: "https://youssef-hamed.vercel.app/",
+      github: "https://github.com/yusuf-mahran/yusuf-mahran-portfolio",
+      live: "#",
       technologies: [
         "nextjs",
         "react",
