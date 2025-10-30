@@ -15,7 +15,7 @@ export default function Hero() {
       <div className="w-full grid md:grid-cols-2 grid-cols-1 justify-center items-center md:text-left text-center">
         <div className="flex justify-center items-start flex-col gap-8">
           <div className="md:mx-0 mx-auto">
-            <h1 className="text-4xl">Hi, I&apos;m Youssef Hamed</h1>
+            <h1 className="text-4xl">Hi, I&apos;m Yusuf Mahran</h1>
             <p
               suppressHydrationWarning
               className={`${CherryBomb.className} text-5xl title-gradient leading-[60px]`}
