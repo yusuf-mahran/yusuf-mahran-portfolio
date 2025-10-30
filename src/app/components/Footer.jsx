@@ -14,7 +14,7 @@ export default function Footer() {
         <h3
           className={`${ruthie.className} color-light-gray dark:text-white text-6xl`}
         >
-          Youssef Hamed
+          Yusuf Mahran
         </h3>
         <Line width="100%" />
         <Para color="color-light-gray dark:text-white">
@@ -30,7 +30,7 @@ export default function Footer() {
       py-2"
       >
         <Para color="color-light-gray dark:text-white">
-          made with ❤️‍🔥 by youssef hamed 😉
+          made with ❤️‍🔥 by yusuf mahran 😉
         </Para>
       </div>
     </footer>
